@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Quiet Board — Position not found</title>
+    <style>
+      @font-face {
+        font-family: "Quiet Board Sans";
+        src: url("./fonts/noto-sans-latin.woff") format("woff");
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+      }
+
+      :root {
+        --ink: #23333a;
+        --muted: #748087;
+        --line: #d8e0dd;
+        --paper: #f5f4ee;
+        --accent: #b65f3d;
+        --accent-dark: #8d432c;
+        --green: #60776e;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { min-height: 100%; background: var(--paper); }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background: linear-gradient(135deg, rgba(255, 255, 255, .5), transparent 45%), var(--paper);
+        font-family: Georgia, "Times New Roman", serif;
+        line-height: 1.5;
+      }
+
+      body::before {
+        content: "";
+        display: block;
+        height: 5px;
+        background: linear-gradient(90deg, var(--accent), #d19b74 52%, var(--green));
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        width: min(100% - 32px, 1080px);
+        min-height: calc(100vh - 5px);
+        margin: 0 auto;
+        padding: 42px 0 32px;
+      }
+
+      .brandline {
+        color: var(--green);
+        font: 700 10px/1.2 "Quiet Board Sans", ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: .19em;
+      }
+
+      main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(72px, 13vh, 140px) 0;
+        text-align: center;
+      }
+
+      .error-code {
+        color: var(--accent);
+        font: 700 clamp(12px, 1.4vw, 15px)/1 "Quiet Board Sans", ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: .2em;
+      }
+
+      h1 {
+        margin: 18px 0 10px;
+        font-size: clamp(36px, 6vw, 62px);
+        font-weight: 400;
+        letter-spacing: -.055em;
+        line-height: 1;
+      }
+
+      .message {
+        max-width: 480px;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(17px, 2vw, 20px);
+        line-height: 1.55;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 13px;
+        margin-top: 34px;
+        font-family: "Quiet Board Sans", ui-sans-serif, system-ui, sans-serif;
+      }
+
+      nav a { text-underline-offset: 4px; }
+
+      .return-link {
+        padding: 11px 15px;
+        color: #fffaf5;
+        background: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .return-link:hover { background: var(--accent-dark); }
+
+      .support-link {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .support-link:hover { color: var(--ink); }
+
+      footer {
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font: 12px/1.75 "Quiet Board Sans", ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .statement {
+        max-width: 680px;
+        margin: 0;
+      }
+
+      .statement p { margin: 0 0 12px; }
+      .statement p:last-child { margin-bottom: 0; }
+
+      .footer-links {
+        margin: 18px 0 0;
+        font-size: 11px;
+      }
+
+      .footer-links a {
+        color: inherit;
+        text-underline-offset: 3px;
+      }
+
+      .footer-links a:hover { color: var(--ink); }
+
+      @media (max-width: 500px) {
+        .page { width: min(100% - 22px, 980px); padding-top: 32px; }
+        main { padding: 72px 0 84px; }
+        h1 { max-width: 330px; }
+        footer { font-size: 11px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="brandline">QUIET BOARD / STUDY PRESS</div>
+      </header>
+
+      <main>
+        <div class="error-code">404</div>
+        <h1>This position does not exist.</h1>
+        <p class="message">The page you are looking for is no longer on the board.</p>
+        <nav aria-label="Page navigation">
+          <a class="return-link" href="https://demetriosparaschos.github.io/quiet-board/">Return to Quiet Board</a>
+          <a class="support-link" href="https://paypal.me/demparaschos" target="_blank" rel="noopener noreferrer">Support this project</a>
+        </nav>
+      </main>
+
+      <footer>
+        <div class="statement">
+          <p>This work is released without restriction.</p>
+          <p>The author does not recognise intellectual property as a legitimate form of property.</p>
+          <p>Code, ideas, algorithms, and information are not regarded by the author as ownable objects once shared or made public. Consequently, the author makes no claim of exclusive ownership over this work and places no restrictions on its use, modification, reproduction, distribution, or incorporation into other works.</p>
+        </div>
+        <p class="footer-links">Read the <a href="https://github.com/DemetriosParaschos/quiet-board/blob/main/PHILOSOPHY.md">PHILOSOPHY.md</a> and <a href="https://github.com/DemetriosParaschos/quiet-board/blob/main/LICENSE">LICENSE</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

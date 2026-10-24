@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Turn PGN chess games into page-by-page study PDFs in your browser." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Quiet Board - PGN to PDF</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div class="brandline">QUIET BOARD / STUDY PRESS</div>
+        <div class="eyebrow">A quiet way to study the game</div>
+        <h1>Quiet Board</h1>
+        <p class="lede">Turn PGN into a printed study book. One position at a time, with the next move waiting on the next page.</p>
+      </header>
+
+      <section class="preview-card" id="preview-card" aria-labelledby="preview-heading" hidden>
+        <div class="preview-heading">
+          <div>
+            <div class="eyebrow">Your study is ready</div>
+            <h2 id="preview-heading" tabindex="-1">Read it here first.</h2>
+            <p class="preview-subtitle">Review the pages in the browser, then keep the PDF when you are ready to print.</p>
+          </div>
+          <div class="preview-actions">
+            <a class="button button-primary" id="download-pdf" href="#" download>Download PDF <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#export-heading">Adjust settings</a>
+          </div>
+        </div>
+        <div class="preview-frame">
+          <iframe id="pdf-preview" title="Generated chess study PDF"></iframe>
+        </div>
+        <div class="preview-meta"><span id="preview-filename"></span><span id="preview-size"></span></div>
+      </section>
+
+      <section class="card" aria-labelledby="export-heading">
+        <div class="card-heading">
+          <div>
+            <div class="eyebrow">Create a study</div>
+            <h2 id="export-heading">Paste a game or open a PGN file</h2>
+          </div>
+          <span class="badge">PDF / browser</span>
+        </div>
+
+        <div class="alert" id="form-error" role="alert" hidden></div>
+        <div class="success-note" id="form-status" role="status" aria-live="polite"></div>
+
+        <form id="export-form">
+          <div class="input-block">
+            <label for="pgn-text">PGN text</label>
+            <textarea id="pgn-text" name="pgn_text" rows="16" placeholder="Paste one or more PGN games here..." spellcheck="false"></textarea>
+            <div class="field-help">Multiple games are supported. Variations are ignored; the main line is typeset.</div>
+          </div>
+
+          <div class="file-row">
+            <div class="file-field">
+              <label for="pgn-file">Or upload a .pgn file</label>
+              <input id="pgn-file" name="pgn_file" type="file" accept=".pgn,text/plain" />
+              <div class="field-error" id="file-error" hidden></div>
+            </div>
+            <div class="file-note">Text stays on this device. Nothing is uploaded or saved by Quiet Board.</div>
+          </div>
+
+          <div class="settings-grid">
+            <fieldset>
+              <legend>Study mode</legend>
+              <label><input type="radio" name="study_mode" value="all" checked /> <span>All moves</span></label>
+              <label><input type="radio" name="study_mode" value="white" /> <span>Play as White</span></label>
+              <label><input type="radio" name="study_mode" value="black" /> <span>Play as Black</span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Board orientation</legend>
+              <label><input type="radio" name="orientation" value="white" checked /> <span>White at bottom</span></label>
+              <label><input type="radio" name="orientation" value="black" /> <span>Black at bottom</span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Paper</legend>
+              <label><input type="radio" name="page_size" value="a4" checked /> <span>A4</span></label>
+              <label><input type="radio" name="page_size" value="letter" /> <span>US Letter</span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Page layout</legend>
+              <label><input type="radio" name="compact" value="1" checked /> <span>One position per page</span></label>
+              <label><input type="radio" name="compact" value="2" /> <span>Compact: 2 per page</span></label>
+              <label><input type="radio" name="compact" value="4" /> <span>Compact: 4 per page</span></label>
+            </fieldset>
+          </div>
+
+          <fieldset class="check-row">
+            <legend>Move information</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="show_last_move" checked /> <span>Last move</span></label>
+              <label><input type="checkbox" name="show_history" /> <span>Move history</span></label>
+              <label><input type="checkbox" name="show_players" checked /> <span>Player names</span></label>
+              <label><input type="checkbox" name="include_comments" /> <span>PGN comments</span></label>
+            </div>
+            <div class="field-help">Comments are shown only on the page for the position they belong to.</div>
+          </fieldset>
+
+          <fieldset class="check-row">
+            <legend>Document</legend>
+            <div class="checks">
+              <label><input type="checkbox" name="include_covers" checked /> <span>Include cover pages</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form-footer">
+            <p>Default: every position, White at the bottom, A4, one position per page.</p>
+            <button id="generate-button" type="submit">Generate &amp; preview <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="notes" aria-label="How it works">
+        <div><span class="note-number">01</span><strong>Paste</strong><span>PGN from your chess database.</span></div>
+        <div><span class="note-number">02</span><strong>Choose</strong><span>Orientation, pace, and detail.</span></div>
+        <div><span class="note-number">03</span><strong>Print</strong><span>Turn pages to reveal the game.</span></div>
+      </section>
+
+      <footer class="footer">Quiet Board is a private, stateless browser tool. No account, upload archive, or external service. <a href="https://paypal.me/demparaschos" target="_blank" rel="noopener noreferrer">Support this project</a></footer>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

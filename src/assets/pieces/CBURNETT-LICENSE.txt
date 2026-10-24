@@ -1,0 +1,13 @@
+Cburnett chess piece artwork
+
+The SVG files in the cburnett directory are the Cburnett chess-piece set by
+Colin M. L. Burnett, bundled unmodified from the Lichess lila repository:
+
+https://github.com/lichess-org/lila/tree/master/public/piece/cburnett
+
+Lichess identifies this artwork as licensed under the GNU General Public
+License, version 2 or any later version (GPLv2+). The complete GPLv2 text is
+included in GPL-2.0.txt.
+
+This notice and GPL-2.0.txt apply to the Cburnett artwork only. Quiet Board's
+own source code remains released under the Unlicense.
